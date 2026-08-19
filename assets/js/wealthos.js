@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		renderOnboarding: function(container) {
 			container.innerHTML = `
 				<div class="wealthos-card" style="max-width: 700px; margin: 0 auto;">
-					<h2>Welcome to WealthOS</h2>
+					<h2>Welcome to WealthOS — Onboarding Setup</h2>
 					<p style="color: var(--wealthos-text-muted);">
 						WealthOS helps you understand your money, improve cash flow, build savings, manage debt, invest consistently, grow assets, and track your progress toward financial goals.
 					</p>
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								</select>
 							</div>
 							<div class="wealthos-form-group">
-								<label>Currency</label>
+								<label>Currency Symbol</label>
 								<input type="text" id="ob-currency" value="$">
 							</div>
 						</div>
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			container.innerHTML = html;
 		},
 
-		// --- INCOME MODULE ---
+		// --- STAGE 1: INCOME MODULE ---
 		loadIncome: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -341,13 +341,17 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 1: Income Module Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Log all revenue streams (Salary, Freelance, Side Hustles, Investments) to establish gross monthly earning power.</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
 							<h3>Add Income Stream</h3>
 							<form onsubmit="WealthOSApp.addIncome(event)">
 								<div class="wealthos-form-group">
 									<label>Name / Source</label>
-									<input type="text" id="inc-name" required placeholder="Main Salary">
+									<input type="text" id="inc-name" required placeholder="Senior Software Engineer Salary">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Category</label>
@@ -361,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								</div>
 								<div class="wealthos-form-group">
 									<label>Amount (${symbol})</label>
-									<input type="number" id="inc-amount" step="0.01" required placeholder="5000">
+									<input type="number" id="inc-amount" step="0.01" required placeholder="5500">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Frequency</label>
@@ -369,9 +373,10 @@ document.addEventListener('DOMContentLoaded', function() {
 										<option value="monthly">Monthly</option>
 										<option value="annually">Annually</option>
 										<option value="weekly">Weekly</option>
+										<option value="biweekly">Bi-weekly</option>
 									</select>
 								</div>
-								<button type="submit" class="wealthos-btn">Save Income</button>
+								<button type="submit" class="wealthos-btn">Save Income Stream</button>
 							</form>
 						</div>
 
@@ -411,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- EXPENSES MODULE ---
+		// --- STAGE 3: EXPENSES MODULE ---
 		loadExpenses: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -428,13 +433,17 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 3: Expense Control Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Audit essential baseline needs vs discretionary expenses to eliminate leaks and maximize cash-flow surplus.</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
-							<h3>Add Expense</h3>
+							<h3>Add Expense Item</h3>
 							<form onsubmit="WealthOSApp.addExpense(event)">
 								<div class="wealthos-form-group">
 									<label>Expense Name</label>
-									<input type="text" id="exp-name" required placeholder="Rent / Mortgage">
+									<input type="text" id="exp-name" required placeholder="Apartment Rent">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Category</label>
@@ -449,13 +458,13 @@ document.addEventListener('DOMContentLoaded', function() {
 								</div>
 								<div class="wealthos-form-group">
 									<label>Amount (${symbol})</label>
-									<input type="number" id="exp-amount" step="0.01" required placeholder="1200">
+									<input type="number" id="exp-amount" step="0.01" required placeholder="1400">
 								</div>
 								<div class="wealthos-form-group">
-									<label>Type</label>
+									<label>Expense Type</label>
 									<select id="exp-essential">
-										<option value="1">Essential</option>
-										<option value="0">Discretionary</option>
+										<option value="1">Essential (Needs)</option>
+										<option value="0">Discretionary (Wants)</option>
 									</select>
 								</div>
 								<button type="submit" class="wealthos-btn">Save Expense</button>
@@ -498,7 +507,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- DEBTS MODULE ---
+		// --- STAGE 6: DEBTS MODULE ---
 		loadDebts: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -515,32 +524,36 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 6: Debt Reduction Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Eliminate high-interest debt using Debt Avalanche (lowest interest cost) or Debt Snowball (rapid momentum).</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
 							<h3>Add Debt Balance</h3>
 							<form onsubmit="WealthOSApp.addDebt(event)">
 								<div class="wealthos-form-group">
 									<label>Debt Name</label>
-									<input type="text" id="debt-name" required placeholder="Credit Card">
+									<input type="text" id="debt-name" required placeholder="Rewards Credit Card">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Current Balance (${symbol})</label>
-									<input type="number" id="debt-bal" step="0.01" required placeholder="3000">
+									<input type="number" id="debt-bal" step="0.01" required placeholder="4500">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Interest Rate (%)</label>
-									<input type="number" id="debt-rate" step="0.1" required placeholder="18.9">
+									<input type="number" id="debt-rate" step="0.1" required placeholder="21.5">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Minimum Payment (${symbol})</label>
-									<input type="number" id="debt-min" step="0.01" required placeholder="75">
+									<input type="number" id="debt-min" step="0.01" required placeholder="120">
 								</div>
-								<button type="submit" class="wealthos-btn">Save Debt</button>
+								<button type="submit" class="wealthos-btn">Save Debt Balance</button>
 							</form>
 						</div>
 
 						<div class="wealthos-card">
-							<h3>Debt Tracker (Avalanche / Snowball Ready)</h3>
+							<h3>Debt Tracker (Avalanche / Snowball Strategy)</h3>
 							<table class="wealthos-table">
 								<thead>
 									<tr>
@@ -575,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- SAVINGS MODULE ---
+		// --- STAGE 7: SAVINGS MODULE ---
 		loadSavings: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -591,28 +604,32 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 7: Savings Goals Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Accumulate dedicated cash reserves for specific milestones (house down payment, emergency reserve, vehicle).</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
 							<h3>Add Savings Goal</h3>
 							<form onsubmit="WealthOSApp.addSavings(event)">
 								<div class="wealthos-form-group">
 									<label>Goal Name</label>
-									<input type="text" id="sav-name" required placeholder="Emergency Fund">
+									<input type="text" id="sav-name" required placeholder="Liquid Emergency Fund">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Target Amount (${symbol})</label>
-									<input type="number" id="sav-target" step="0.01" required placeholder="10000">
+									<input type="number" id="sav-target" step="0.01" required placeholder="15000">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Current Amount (${symbol})</label>
-									<input type="number" id="sav-current" step="0.01" required placeholder="2500">
+									<input type="number" id="sav-current" step="0.01" required placeholder="3000">
 								</div>
 								<button type="submit" class="wealthos-btn">Save Goal</button>
 							</form>
 						</div>
 
 						<div class="wealthos-card">
-							<h3>Savings Goals</h3>
+							<h3>Savings Goals Tracker</h3>
 							<table class="wealthos-table">
 								<thead>
 									<tr>
@@ -645,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- INVESTMENTS MODULE ---
+		// --- STAGE 8: INVESTMENTS MODULE ---
 		loadInvestments: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -661,33 +678,37 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 8: Long-Term Investing Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Build wealth consistently through broad-market index funds, ETFs, stocks, bonds, and retirement holdings.</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
-							<h3>Add Investment</h3>
+							<h3>Add Investment Holding</h3>
 							<form onsubmit="WealthOSApp.addInvestment(event)">
 								<div class="wealthos-form-group">
 									<label>Investment Name</label>
-									<input type="text" id="inv-name" required placeholder="S&P 500 ETF">
+									<input type="text" id="inv-name" required placeholder="Vanguard Total Stock Market ETF (VTI)">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Asset Class</label>
 									<select id="inv-class">
-										<option value="Stocks">Stocks / ETFs</option>
+										<option value="Stocks">Stocks / Index ETFs</option>
 										<option value="Bonds">Bonds</option>
-										<option value="Real Estate">Real Estate</option>
+										<option value="Real Estate">Real Estate REITs</option>
 										<option value="Crypto">Crypto</option>
 									</select>
 								</div>
 								<div class="wealthos-form-group">
 									<label>Current Value (${symbol})</label>
-									<input type="number" id="inv-value" step="0.01" required placeholder="15000">
+									<input type="number" id="inv-value" step="0.01" required placeholder="25000">
 								</div>
 								<button type="submit" class="wealthos-btn">Save Investment</button>
 							</form>
 						</div>
 
 						<div class="wealthos-card">
-							<h3>Investment Portfolio</h3>
+							<h3>Investment Portfolio Holdings</h3>
 							<table class="wealthos-table">
 								<thead>
 									<tr>
@@ -720,7 +741,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- PRODUCTIVE ASSETS MODULE ---
+		// --- STAGE 9: PRODUCTIVE ASSETS MODULE ---
 		loadAssets: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -737,37 +758,41 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 9: Productive Assets Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Acquire or build cash-flowing assets (rental properties, digital IP, equipment) that generate monthly income.</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
 							<h3>Add Productive Asset</h3>
 							<form onsubmit="WealthOSApp.addAsset(event)">
 								<div class="wealthos-form-group">
-									<label>Asset Name</label>
-									<input type="text" id="ast-name" required placeholder="Rental Property A">
+									<label>Asset Title</label>
+									<input type="text" id="ast-name" required placeholder="Duplex Rental Unit #1">
 								</div>
 								<div class="wealthos-form-group">
 									<label>Category</label>
 									<select id="ast-category">
 										<option value="Real Estate">Real Estate</option>
-										<option value="Business">Business</option>
-										<option value="Intellectual Property">Intellectual Property</option>
+										<option value="Business">Business Stream</option>
+										<option value="Intellectual Property">Digital / IP Asset</option>
 										<option value="Equipment">Equipment</option>
 									</select>
 								</div>
 								<div class="wealthos-form-group">
-									<label>Estimated Value (${symbol})</label>
-									<input type="number" id="ast-val" step="0.01" required placeholder="250000">
+									<label>Estimated Market Value (${symbol})</label>
+									<input type="number" id="ast-val" step="0.01" required placeholder="320000">
 								</div>
 								<div class="wealthos-form-group">
-									<label>Monthly Cash Flow / Income (${symbol})</label>
-									<input type="number" id="ast-income" step="0.01" placeholder="800">
+									<label>Net Monthly Cash Flow / Income (${symbol})</label>
+									<input type="number" id="ast-income" step="0.01" placeholder="850">
 								</div>
 								<button type="submit" class="wealthos-btn">Save Productive Asset</button>
 							</form>
 						</div>
 
 						<div class="wealthos-card">
-							<h3>Productive Assets</h3>
+							<h3>Productive Assets Tracker</h3>
 							<table class="wealthos-table">
 								<thead>
 									<tr>
@@ -802,7 +827,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- BUSINESS MODULE ---
+		// --- STAGE 10: BUSINESS MODULE ---
 		loadBusiness: function(container) {
 			const self = this;
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
@@ -810,35 +835,39 @@ document.addEventListener('DOMContentLoaded', function() {
 			this.apiFetch('business').then(data => {
 				const m = data.metrics || {};
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 10: Business Growth Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Track business revenue, expenses, operating profit, and owner draws to scale business cash reserves.</p>
+					</div>
 					<div class="wealthos-grid-2">
 						<div class="wealthos-card">
-							<h3>Log Business Performance</h3>
+							<h3>Log Monthly Business Metrics</h3>
 							<form onsubmit="WealthOSApp.saveBusiness(event)">
 								<div class="wealthos-form-group">
-									<label>Monthly Revenue (${symbol})</label>
-									<input type="number" id="biz-rev" value="${m.revenue || ''}" required placeholder="12000">
+									<label>Monthly Gross Revenue (${symbol})</label>
+									<input type="number" id="biz-rev" value="${m.revenue || ''}" required placeholder="15000">
 								</div>
 								<div class="wealthos-form-group">
-									<label>Monthly Operating Expenses (${symbol})</label>
-									<input type="number" id="biz-exp" value="${m.expenses || ''}" required placeholder="4000">
+									<label>Operating Expenses (${symbol})</label>
+									<input type="number" id="biz-exp" value="${m.expenses || ''}" required placeholder="5000">
 								</div>
 								<div class="wealthos-form-group">
-									<label>Owner Compensation / Draw (${symbol})</label>
-									<input type="number" id="biz-draw" value="${m.owner_compensation || ''}" placeholder="5000">
+									<label>Owner Draw / Compensation (${symbol})</label>
+									<input type="number" id="biz-draw" value="${m.owner_compensation || ''}" placeholder="6000">
 								</div>
 								<button type="submit" class="wealthos-btn">Update Business Metrics</button>
 							</form>
 						</div>
 
 						<div class="wealthos-card">
-							<h3>Business Metrics Summary</h3>
+							<h3>Business Financial Performance</h3>
 							<div class="wealthos-grid-2">
 								<div>
 									<div class="wealthos-stat-sub">Monthly Revenue</div>
 									<div class="wealthos-stat-value" style="font-size: 22px;">${symbol}${parseFloat(m.revenue || 0).toLocaleString()}</div>
 								</div>
 								<div>
-									<div class="wealthos-stat-sub">Monthly Profit</div>
+									<div class="wealthos-stat-sub">Monthly Operating Profit</div>
 									<div class="wealthos-stat-value" style="font-size: 22px; color: var(--wealthos-accent);">${symbol}${parseFloat(m.profit || 0).toLocaleString()}</div>
 								</div>
 							</div>
@@ -861,7 +890,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		},
 
-		// --- RISK MODULE ---
+		// --- STAGE 11: RISK MODULE ---
 		loadRisk: function(container) {
 			const self = this;
 
@@ -880,8 +909,12 @@ document.addEventListener('DOMContentLoaded', function() {
 				`).join('');
 
 				container.innerHTML = `
+					<div class="wealthos-card" style="margin-bottom:20px; background:#eff6ff; border-left:4px solid #3b82f6;">
+						<h4 style="margin:0 0 4px 0; color:#1e40af;">Stage 11: Risk Management Goal</h4>
+						<p style="margin:0; font-size:13px; color:#1e3a8a;">Safeguard accumulated wealth against health, legal, cybersecurity, and emergency shocks.</p>
+					</div>
 					<div class="wealthos-card">
-						<h3>Financial Risk Management Checklist</h3>
+						<h3>Financial Risk Checklist</h3>
 						<p>Risk Score: <strong>${data.risk_score} / 100 (${data.risk_label} Risk)</strong></p>
 						<table class="wealthos-table">
 							<thead>
@@ -944,13 +977,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		// --- WEALTH ROADMAP ---
 		loadRoadmap: function(container) {
 			const stages = [
-				{ step: 1, title: 'Know Your Numbers', desc: 'Log all income sources, expenses, and asset balances.' },
-				{ step: 2, title: 'Control Cash Flow', desc: 'Generate a positive monthly surplus (Income > Expenses).' },
-				{ step: 3, title: 'Starter Emergency Fund', desc: 'Accumulate a $1,000 liquid buffer.' },
-				{ step: 4, title: 'High-Interest Debt Elimination', desc: 'Pay off credit card balances using Avalanche or Snowball.' },
-				{ step: 5, title: 'Full Emergency Protection', desc: 'Build 3–6 months essential expense reserve.' },
-				{ step: 6, title: 'Consistent Saving & Long-Term Investing', desc: 'Automate 15%+ savings into index funds/ETFs.' },
-				{ step: 7, title: 'Productive Asset Building & FI', desc: 'Scale cash-flowing assets toward Financial Independence.' }
+				{ step: 1, title: 'Know Your Numbers (Income)', desc: 'Log all income streams and pay cycles.' },
+				{ step: 2, title: 'Calculate Cash Flow', desc: 'Ensure monthly income exceeds monthly expenses.' },
+				{ step: 3, title: 'Control Expenses', desc: 'Plug discretionary spending leaks.' },
+				{ step: 4, title: 'Proactive Budgeting', desc: 'Assign every dollar a job before spending.' },
+				{ step: 5, title: 'Emergency Protection', desc: 'Build 3–6 months essential expense buffer.' },
+				{ step: 6, title: 'Debt Freedom', desc: 'Eliminate credit cards via Avalanche or Snowball.' },
+				{ step: 7, title: 'Milestone Savings', desc: 'Accumulate cash for medium-term goals.' },
+				{ step: 8, title: 'Long-Term Investing', desc: 'Automate index fund and ETF contributions.' },
+				{ step: 9, title: 'Productive Assets', desc: 'Acquire cash-flowing real estate or IP.' },
+				{ step: 10, title: 'Business Growth', desc: 'Scale business revenue and profit draws.' },
+				{ step: 11, title: 'Risk Management', desc: 'Complete 100% of risk protection checklist.' }
 			];
 
 			let items = stages.map(st => `
@@ -965,8 +1002,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			container.innerHTML = `
 				<div class="wealthos-card" style="max-width:700px; margin:0 auto;">
-					<h3>Wealth Creation Roadmap</h3>
-					<p style="margin-bottom:20px;">Follow the 7 sequential milestones to systematic financial freedom:</p>
+					<h3>11-Step Wealth Lifecycle Roadmap</h3>
+					<p style="margin-bottom:20px;">Follow the 11 sequential business process stages to systematic wealth creation:</p>
 					${items}
 				</div>
 			`;

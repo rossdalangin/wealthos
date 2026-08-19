@@ -1,271 +1,273 @@
 # WealthOS — Personal Wealth Operating System
-## Complete Feature Documentation, Field Guides & Developer Manual
+## Complete Business Process Manual, Module Guides & Form Instructions
 
 ---
 
-### Key Resources & Guides
-* **Step-by-Step User Masterclasses**: See [TUTORIALS.md](TUTORIALS.md) for 5 real-world walkthroughs (Beginner, Debt Freedom, Freelancer/Entrepreneur, Household, and Wealth Scaling).
-* **Sales Copy & Marketing Collateral**: See [MARKETING.md](MARKETING.md) for landing page copy, value propositions, email launch sequences, feature comparison tables, and social media hooks.
+### Master Wealth Lifecycle Business Process Flow
+
+WealthOS is architected around a strict, interconnected 11-stage wealth creation lifecycle:
+
+$$\text{1. Income} \rightarrow \text{2. Cash Flow} \rightarrow \text{3. Expense Control} \rightarrow \text{4. Emergency Fund} \rightarrow \text{5. Debt Reduction}$$
+$$\rightarrow \text{6. Savings} \rightarrow \text{7. Investing} \rightarrow \text{8. Asset Building} \rightarrow \text{9. Business Growth} \rightarrow \text{10. Risk Management} \rightarrow \text{11. Net Worth Growth}$$
+
+Every form, input field, and calculation in WealthOS feeds directly into this sequential engine.
 
 ---
 
-### Table of Contents
-1. **Overview & Product Philosophy**
-2. **Onboarding Wizard**
-3. **Income Module & Growth Planner**
-4. **Expense Module & Control Engine**
-5. **Budget Module**
-6. **Emergency Reserve Module**
-7. **Debt Reduction System (Avalanche vs. Snowball)**
-8. **Savings Goals Module**
-9. **Investment Portfolio Tracker & Allocation**
-10. **Productive Assets Module**
-11. **Net Worth Engine**
-12. **WealthScore Engine (0–100)**
-13. **Financial Bottleneck Engine**
-14. **Action Center ("What Should I Do Next?")**
-15. **Visual Wealth Roadmap**
-16. **Entrepreneur & Freelancer Business Module**
-17. **Financial Risk Management Checklist**
-18. **Compounding Growth Calculator & FI Projections**
-19. **Scenario Planner & "What-If?" Simulation**
-20. **Financial Calendar & Notifications**
-21. **Monthly Reviews & Annual Wealth Reports**
-22. **Admin Settings & White-Label Customization**
+### Table of Contents (By Business Process Stage)
+
+1. **System Onboarding & Profiling**
+2. **Stage 1: Income Module & Growth Planner**
+3. **Stage 2: Cash Flow Engine & Surplus Dashboard**
+4. **Stage 3: Expense Control Module & Leak Detector**
+5. **Stage 4: Budget Module (Zero-Based / Custom)**
+6. **Stage 5: Emergency Reserve Planner**
+7. **Stage 6: Debt Reduction System (Avalanche vs. Snowball)**
+8. **Stage 7: Savings Goals Tracker**
+9. **Stage 8: Investment Portfolio Tracker & Allocation**
+10. **Stage 9: Productive Asset Building Module**
+11. **Stage 10: Entrepreneur & Business Growth Module**
+12. **Stage 11: Risk Management Checklist & Score**
+13. **Central Intelligence: Net Worth Engine & WealthScore (0–100)**
+14. **Central Intelligence: Bottleneck Engine & Action Center ("What Should I Do Next?")**
+15. **Central Intelligence: Visual Wealth Roadmap**
+16. **Projections & Calculators: Compounding Calculator & FI Projections**
+17. **Projections & Calculators: Scenario Planner ("What If?")**
+18. **Admin White-Labeling & System Configuration**
 
 ---
 
-### 1. Overview & Product Philosophy
-WealthOS turns personal financial data into an integrated wealth-building operating system. Rather than treating budgeting, debt, and investing as isolated silos, WealthOS connects every financial variable:
+### 1. System Onboarding & Profiling
 
-$$\text{Income} \rightarrow \text{Cash Flow Surplus} \rightarrow \text{Emergency Reserve} \rightarrow \text{Debt Reduction} \rightarrow \text{Productive Asset Accumulation} \rightarrow \text{Net Worth Growth}$$
+#### Business Process Position & Goal
+The entry point of the WealthOS operating system. The goal is to establish baseline demographic context, currency preferences, and primary goals without collecting sensitive or PII data.
 
-#### Core Philosophy
-* Earning Power $\rightarrow$ Surplus Creation $\rightarrow$ Emergency Protection $\rightarrow$ Debt Elimination $\rightarrow$ Long-Term Compounding.
-* Non-judgmental, non-shaming educational guidance.
-* Educational Disclaimer: Software tool only; not a financial adviser, fiduciary, or broker. Does not promise guaranteed returns.
+#### Form Input Guide & Examples
+* **Age Range**: Dropdown (`18-24`, `25-34`, `35-44`, `45-54`, `55+`). *Example*: Select `25-34`.
+* **Currency Symbol**: Text input for global currency display. *Example*: Enter `$` (or `€`, `£`, `¥`).
+* **Employment Type**: Dropdown (`Employed / Salaried`, `Freelancer / Contractor`, `Entrepreneur / Business Owner`, `Other`). *Example*: Select `Employed / Salaried`.
+* **Risk Tolerance**: Dropdown (`Conservative`, `Moderate`, `Aggressive`). *Example*: Select `Moderate`.
+* **Primary Financial Goal**: Text input defining top milestone. *Example*: Enter `Build $100k Net Worth & Eliminate Credit Debt`.
 
----
-
-### 2. Onboarding Wizard
-Guides new users through baseline profiling.
-
-#### Fields & Definitions
-* **Age Range**: Selects life-stage context (`18-24`, `25-34`, `35-44`, `45-54`, `55+`). *Example*: `25-34`.
-* **Currency Symbol**: Defines currency display symbol across all dashboards. *Example*: `$`, `€`, `£`.
-* **Employment Type**: Classifies income stability (`Employed / Salaried`, `Freelancer / Contractor`, `Entrepreneur / Business Owner`, `Other`).
-* **Risk Tolerance**: Contextualizes portfolio warnings (`Conservative`, `Moderate`, `Aggressive`).
-* **Primary Financial Goal**: User's top milestone. *Example*: `Build $100k Net Worth & Pay Off Debt`.
+#### What to Accomplish / Goal
+Initializes user profile state in `wealthos_user_profile` table and unlocks the dashboard.
 
 ---
 
-### 3. Income Module & Growth Planner
-Tracks all income sources and normalizes amounts to monthly/annual metrics.
+### 2. Stage 1: Income Module & Growth Planner
 
-#### Fields & Instructions
-* **Income Name**: Descriptive name. *Example*: `Primary Software Engineer Salary`.
-* **Category**: Income type (`Salary`, `Freelance`, `Business`, `Investments`, `Side Hustle`, `Other`).
-* **Amount**: Earning amount in specified currency. *Example*: `6000.00`.
-* **Frequency**: Payment cycle (`Monthly`, `Annually`, `Weekly`, `Biweekly`, `Quarterly`).
+#### Business Process Position & Goal
+**Stage 1 of 11**. Establishing and expanding earning power. The goal is to record all revenue sources, convert diverse pay cycles to monthly metrics, and identify income concentration risks.
 
-#### Automatic Calculations
-* **Monthly Income**: Converts any frequency to monthly value ($12,000\text{ annually} = \$1,000/\text{month}$).
-* **Primary Income Concentration**: $\frac{\text{Highest Category Income}}{\text{Total Income}} \times 100\%$. If $>90\%$, triggers educational diversification recommendation.
+#### Form Input Guide & Examples
+* **Income Stream Name**: Text field. *Example*: `Senior Software Engineer Salary`.
+* **Category**: Dropdown (`Salary`, `Freelance`, `Business`, `Investments`, `Side Hustle`, `Other`). *Example*: Select `Salary`.
+* **Amount**: Number field in local currency. *Example*: `5500.00`.
+* **Frequency**: Dropdown (`Monthly`, `Annually`, `Weekly`, `Biweekly`, `Quarterly`). *Example*: Select `Monthly`.
 
----
-
-### 4. Expense Module & Control Engine
-Tracks essential vs. discretionary obligations and identifies expense leaks.
-
-#### Fields & Instructions
-* **Expense Name**: Name of expense. *Example*: `Apartment Rent`.
-* **Category**: Expense category (`Housing`, `Food`, `Utilities`, `Transportation`, `Subscriptions`, `Entertainment`, `Other`).
-* **Amount**: Expense numerical value. *Example*: `1500.00`.
-* **Type (Essential vs. Discretionary)**:
-  * `Essential`: Needs required for basic living (housing, groceries, utilities).
-  * `Discretionary`: Wants and lifestyle choices (dining out, streaming services).
-
-#### Expense Leak Engine
-* Detects high discretionary ratios ($>45\%$) and multiple recurring subscriptions ($\ge 3$), offering non-shaming optimization notes.
+#### System Calculations & Outcomes
+* **Monthly Normalization**: Converts any frequency into monthly baseline:
+  $$\text{Annual } (\$66,000) \div 12 = \$5,500/\text{month}$$
+* **Income Concentration Alert**: Triggered if a single source represents $>90\%$ of total earnings.
+* **Goal Achieved**: Complete clarity on gross monthly earning power.
 
 ---
 
-### 5. Budget Module
-Allows users to set target category limits under Zero-Based, Percentage-Based, or Custom models.
+### 3. Stage 2: Cash Flow Engine & Surplus Dashboard
 
-#### Fields & Instructions
-* **Category**: Budget category target. *Example*: `Food`.
-* **Allocated Amount**: Target monthly threshold. *Example*: `500.00`.
-* **Budget vs. Actual**: Compares budgeted target against actual logged expenses.
-  * *Example*: Budgeted: $\$500$, Actual: $\$475 \rightarrow +\$25$ (Under Budget / Healthy).
+#### Business Process Position & Goal
+**Stage 2 of 11**. Calculating net financial surplus. The goal is to ensure Total Monthly Income exceeds Total Monthly Expenses, creating the capital required to fund all downstream stages (Emergency, Debt, Investing).
 
----
-
-### 6. Emergency Reserve Module
-Calculates multi-stage liquidity targets.
-
-#### Stages & Formulas
-* **Essential Monthly Expenses**: Calculated automatically from essential expenses.
-* **Target Formula**: $\text{Essential Expenses} \times \text{Target Months (3–6)}$.
-  * *Example*: Essential Expenses = $\$2,500/\text{month} \rightarrow 6\text{-Month Target} = \$15,000$.
-* **Stages**:
-  * *Stage 1*: Starter Emergency Reserve ($\$1,000$).
-  * *Stage 2*: 1 Month Essential Reserve.
-  * *Stage 3*: 3 Months Essential Reserve.
-  * *Stage 4*: 6 Months Essential Reserve (Fully Funded).
+#### System Calculations & Outcomes
+* **Cash Flow Formula**:
+  $$\text{Cash Flow Surplus} = \text{Total Monthly Income} - \text{Total Monthly Expenses}$$
+* **Savings Rate Formula**:
+  $$\text{Savings Rate \%} = \left( \frac{\text{Cash Flow Surplus}}{\text{Total Monthly Income}} \right) \times 100\%$$
+* **Goal Achieved**: Generating a positive savings rate ($\ge 15–20\%$).
 
 ---
 
-### 7. Debt Reduction System (Avalanche vs. Snowball)
-Simulates debt payoff schedules using proven financial strategies.
+### 4. Stage 3: Expense Control Module & Leak Detector
 
-#### Fields & Instructions
-* **Debt Name**: Balance name. *Example*: `Rewards Credit Card`.
-* **Current Balance**: Total amount owed. *Example*: `4500.00`.
-* **Interest Rate (%)**: Annual interest rate. *Example*: `21.5%`.
-* **Minimum Monthly Payment**: Mandatory minimum requirement. *Example*: `120.00`.
+#### Business Process Position & Goal
+**Stage 3 of 11**. Plug expense leaks and optimize spending ratios. The goal is to categorize expenses into Essential vs. Discretionary needs and eliminate wasteful recurring subscriptions.
 
-#### Payoff Strategies
-* **Debt Avalanche**: Prioritizes debts by highest interest rate first to minimize lifetime interest charges.
-* **Debt Snowball**: Prioritizes debts by smallest balance first to generate quick psychological wins.
+#### Form Input Guide & Examples
+* **Expense Name**: Text field. *Example*: `Apartment Rent`.
+* **Category**: Dropdown (`Housing`, `Food`, `Utilities`, `Transportation`, `Subscriptions`, `Entertainment`, `Other`). *Example*: `Housing`.
+* **Amount**: Number field. *Example*: `1400.00`.
+* **Type**: Dropdown (`Essential` or `Discretionary`). *Example*: `Essential`.
 
----
-
-### 8. Savings Goals Module
-Tracks progress toward specific financial milestones.
-
-#### Fields & Instructions
-* **Goal Name**: Milestone title. *Example*: `Home Down Payment`.
-* **Target Amount**: Final monetary target. *Example*: `30000.00`.
-* **Current Amount**: Saved amount to date. *Example*: `12000.00`.
-* **Required Monthly Contribution**: $\frac{\text{Target} - \text{Current}}{\text{Months Remaining to Deadline}}$.
+#### System Calculations & Outcomes
+* **Expense Leak Detection**: Flags discretionary spending exceeding $45\%$ of total expenses or $\ge 3$ active subscriptions.
+* **Goal Achieved**: Minimizing non-essential leaks without non-judgmental shaming.
 
 ---
 
-### 9. Investment Portfolio Tracker & Allocation
-Monitors stock, bond, ETF, real estate, and crypto holdings.
+### 5. Stage 4: Budget Module (Zero-Based / Custom)
 
-#### Fields & Instructions
-* **Investment Name**: Asset title. *Example*: `Vanguard Total Stock Market ETF (VTI)`.
-* **Asset Class**: Category (`Stocks`, `Bonds`, `Real Estate`, `Crypto`, `Cash`).
-* **Current Value**: Market valuation. *Example*: `25000.00`.
-* **Concentration Warning**: Flags asset classes making up $\ge 75\%$ of total portfolio.
+#### Business Process Position & Goal
+**Stage 4 of 11**. Proactive capital allocation. The goal is to assign every dollar of surplus a job before the month begins.
 
----
+#### Form Input Guide & Examples
+* **Category Target**: Text field. *Example*: `Groceries`.
+* **Allocated Monthly Amount**: Number field. *Example*: `500.00`.
 
-### 10. Productive Assets Module
-Tracks cash-flowing productive assets (real estate, businesses, IP, equipment).
-
-#### Fields & Instructions
-* **Asset Name**: Title. *Example*: `Duplex Rental Unit #1`.
-* **Estimated Market Value**: Asset valuation. *Example*: `320000.00`.
-* **Monthly Cash Flow / Income**: Net monthly income generated. *Example*: `950.00`.
+#### System Calculations & Outcomes
+* **Budget vs. Actual Variance**:
+  $$\text{Variance} = \text{Allocated Target} - \text{Actual Expenses}$$
+  * *Example*: Target $\$500$, Actual $\$450 \rightarrow +\$50$ (Under Budget / Healthy).
+* **Goal Achieved**: Zero unallocated dollars; total spending matches plan.
 
 ---
 
-### 11. Net Worth Engine
-Central calculation of total wealth.
+### 6. Stage 5: Emergency Reserve Planner
 
+#### Business Process Position & Goal
+**Stage 5 of 11**. Financial defense and risk protection. The goal is to build a liquid emergency buffer to avoid taking on new debt during unexpected life shocks.
+
+#### Form Input Guide & Examples
+* **Goal Name**: Text field. *Example*: `Liquid Emergency Fund`.
+* **Target Amount**: Number field. *Example*: `15000.00` (6 months of $\$2,500$ essential expenses).
+* **Current Amount**: Number field. *Example*: `3000.00`.
+
+#### System Calculations & Outcomes
+* **Stage Progress**:
+  * *Stage 1*: Starter Reserve ($\$1,000$).
+  * *Stage 2*: 1 Month Essential Expenses.
+  * *Stage 3*: 3 Months Essential Expenses.
+  * *Stage 4*: 6 Months Essential Expenses (Fully Funded).
+* **Goal Achieved**: 100% completion of Stage 4 reserve.
+
+---
+
+### 7. Stage 6: Debt Reduction System (Avalanche vs. Snowball)
+
+#### Business Process Position & Goal
+**Stage 6 of 11**. High-interest debt elimination. The goal is to systematically pay off liabilities using mathematical (Avalanche) or behavioral (Snowball) strategies.
+
+#### Form Input Guide & Examples
+* **Debt Name**: Text field. *Example*: `Rewards Credit Card`.
+* **Current Balance**: Number field. *Example*: `4500.00`.
+* **Interest Rate (%)**: Number field. *Example*: `21.5`.
+* **Minimum Payment**: Number field. *Example*: `120.00`.
+
+#### System Calculations & Outcomes
+* **Debt Avalanche**: Prioritizes highest interest rate first to minimize interest cost.
+* **Debt Snowball**: Prioritizes smallest balance first for rapid psychological wins.
+* **Goal Achieved**: Total elimination of high-interest consumer debt ($>8–10\%$).
+
+---
+
+### 8. Stage 7: Savings Goals Tracker
+
+#### Business Process Position & Goal
+**Stage 7 of 11**. Capital accumulation for specific medium-term milestones (house down payment, vehicle, business capital).
+
+#### Form Input Guide & Examples
+* **Goal Title**: Text field. *Example*: `Home Down Payment`.
+* **Target Amount**: Number field. *Example*: `30000.00`.
+* **Current Saved**: Number field. *Example*: `12000.00`.
+* **Deadline**: Date field (`YYYY-MM-DD`). *Example*: `2025-12-31`.
+
+#### System Calculations & Outcomes
+* **Required Monthly Contribution**:
+  $$\text{Required Contribution} = \frac{\text{Target Amount} - \text{Current Amount}}{\text{Months Remaining to Deadline}}$$
+* **Goal Achieved**: Meeting required monthly contribution rate to hit milestone on schedule.
+
+---
+
+### 9. Stage 8: Investment Portfolio Tracker & Allocation
+
+#### Business Process Position & Goal
+**Stage 8 of 11**. Long-term wealth compounding. The goal is to track asset accumulation in index funds, stocks, bonds, and retirement accounts.
+
+#### Form Input Guide & Examples
+* **Asset Name**: Text field. *Example*: `Vanguard S&P 500 ETF (VOO)`.
+* **Asset Class**: Dropdown (`Stocks`, `Bonds`, `Real Estate`, `Crypto`, `Cash`). *Example*: `Stocks`.
+* **Current Market Value**: Number field. *Example*: `35000.00`.
+
+#### System Calculations & Outcomes
+* **Asset Allocation Donut SVG**: Calculates asset class percentages. Flags concentration risks ($\ge 75\%$).
+* **Goal Achieved**: Building a diversified, growing investment portfolio.
+
+---
+
+### 10. Stage 9: Productive Asset Building Module
+
+#### Business Process Position & Goal
+**Stage 9 of 11**. Cash-flowing asset accumulation. The goal is to acquire or build assets that generate passive income (rental real estate, businesses, digital IP, equipment).
+
+#### Form Input Guide & Examples
+* **Asset Title**: Text field. *Example*: `Duplex Rental Unit #1`.
+* **Estimated Value**: Number field. *Example*: `320000.00`.
+* **Monthly Cash Flow / Income**: Number field. *Example*: `850.00`.
+
+#### System Calculations & Outcomes
+* **Net Cash Flow Contribution**: Adds net asset income directly to Stage 1 Monthly Income.
+* **Goal Achieved**: Replacing active job earnings with productive asset cash flow.
+
+---
+
+### 11. Stage 10: Entrepreneur & Business Growth Module
+
+#### Business Process Position & Goal
+**Stage 10 of 11**. Business scaling for entrepreneurs and freelancers. The goal is to track revenue, expenses, operating profit, and owner compensation.
+
+#### Form Input Guide & Examples
+* **Monthly Revenue**: Number field. *Example*: `15000.00`.
+* **Operating Expenses**: Number field. *Example*: `5000.00`.
+* **Owner Draw / Compensation**: Number field. *Example*: `6000.00`.
+
+#### System Calculations & Outcomes
+* **Operating Profit**:
+  $$\text{Operating Profit} = \text{Revenue} - \text{Operating Expenses} = \$10,000/\text{month}$$
+* **Retained Reserve**: $\text{Operating Profit} - \text{Owner Compensation} = \$4,000$.
+* **Goal Achieved**: Reinvesting profit reserves to scale revenue.
+
+---
+
+### 12. Stage 11: Risk Management Checklist & Score
+
+#### Business Process Position & Goal
+**Stage 11 of 11**. Wealth protection and risk mitigation. The goal is to safeguard wealth against legal, medical, cybersecurity, or dependency shocks.
+
+#### Form Input Guide & Examples
+* **Checklist Items**: Toggle dropdown (`Needs Attention` or `Complete`) across Health Insurance, Life Insurance, Emergency Reserve, Debt Elimination, 2FA/Password Security, and Beneficiary Updates.
+
+#### System Calculations & Outcomes
+* **Risk Score (0–100)**: Evaluates complete items. Low score indicates high protection.
+* **Goal Achieved**: 100% completion of risk checklist.
+
+---
+
+### 13. Central Intelligence: Net Worth Engine & WealthScore (0–100)
+
+#### Business Process Position & Goal
+Central financial scoreboard evaluating overall progress.
+
+#### Formulas & Logic
 $$\text{Net Worth} = \text{Total Assets} - \text{Total Liabilities}$$
-
-* **Total Assets**: Investments + Productive Assets + Savings Balances.
-* **Total Liabilities**: Sum of all outstanding Debt Balances.
-* **Net Worth Growth %**: $\frac{\text{Current Net Worth} - \text{Previous Net Worth}}{|\text{Previous Net Worth}|} \times 100\%$.
+$$\text{WealthScore (0–100)} = \text{Cash Flow (20)} + \text{Emergency (20)} + \text{Debt (20)} + \text{Investing (20)} + \text{Risk (20)}$$
 
 ---
 
-### 12. WealthScore Engine (0–100)
-Transparent educational score broken down into 5 equal 20-point components:
-1. **Cash Flow Health (0-20)**: Savings rate percentage.
-2. **Emergency Protection (0-20)**: Reserve coverage percentage.
-3. **Debt Burden (0-20)**: Debt-to-Income ratio.
-4. **Investment Progress (0-20)**: Portfolio capitalization.
-5. **Risk Protection (0-20)**: Risk checklist completion.
+### 14. Central Intelligence: Bottleneck Engine & Action Center
+
+#### Goal
+Automated identification of the single highest-priority obstacle holding back your net worth growth, generating prioritized action cards.
 
 ---
 
-### 13. Financial Bottleneck Engine
-Identifies the single highest-priority bottleneck holding back wealth accumulation:
-1. *No Active Income*
-2. *Cash Flow Deficit*
-3. *High-Interest Debt ($>10\%$ interest)*
-4. *Insufficient Emergency Reserve ($<50\%$ of target)*
-5. *Low Savings Rate ($<15\%$)*
-6. *Lack of Long-Term Investing*
+### 15. Projections & Calculators: Compounding & FI (25x Rule)
+
+#### Goal
+Interactive compounding growth calculator and Financial Independence (FI) 25x Annual Expense target calculator.
+
+$$\text{FI Target} = \text{Annual Expenses} \times 25$$
 
 ---
 
-### 14. Action Center ("What Should I Do Next?")
-Generates prioritized action cards based on bottleneck analysis with priority ratings (`High`, `Medium`, `Low`) and difficulty scores.
-
----
-
-### 15. Visual Wealth Roadmap
-7-step milestone journey:
-1. *Know Your Numbers*
-2. *Control Cash Flow*
-3. *Starter Emergency Reserve*
-4. *High-Interest Debt Reduction*
-5. *Full Emergency Protection*
-6. *Consistent Saving & Investing*
-7. *Productive Asset Building*
-
----
-
-### 16. Entrepreneur & Freelancer Business Module
-For business owners and freelancers.
-
-#### Fields & Instructions
-* **Monthly Revenue**: Gross income generated by business. *Example*: `15000.00`.
-* **Monthly Operating Expenses**: Cost of goods and overhead. *Example*: `5000.00`.
-* **Owner Compensation / Draw**: Pay taken by business owner. *Example*: `6000.00`.
-* **Operating Profit**: $\text{Revenue} - \text{Expenses} = \$10,000/\text{month}$.
-
----
-
-### 17. Financial Risk Management Checklist
-Evaluates risk protection across 8 key areas:
-* Emergency Reserve
-* High-Interest Debt Elimination
-* Income Stream Diversity
-* Asset Allocation Concentration
-* Health & Disability Insurance
-* Term Life Insurance
-* Cybersecurity (2FA & Password Managers)
-* Legal & Estate Beneficiary Updates
-
----
-
-### 18. Compounding Growth Calculator & FI Projections
-Interactive tool demonstrating the power of compound interest.
-
-#### Formula
-$$A = P (1 + r/n)^{nt} + PMT \times \left[ \frac{(1 + r/n)^{nt} - 1}{r/n} \right]$$
-
-* **Separation**: Distinguishes **Total Contributed** from **Estimated Investment Growth**.
-* **Financial Independence (FI) Target**: Calculates the 25x annual expense milestone ($\text{Annual Expenses} \times 25$).
-
----
-
-### 19. Scenario Planner & "What-If?" Simulation
-Models how changes in monthly variables (e.g. saving an extra $\$200/\text{month}$ or earning $\$500/\text{month}$ more) compound over a 5-year horizon.
-
----
-
-### 20. Financial Calendar & Notifications
-Tracks upcoming bill due dates, debt payments, and financial reviews. Includes non-manipulative progress notifications.
-
----
-
-### 21. Monthly Reviews & Annual Wealth Reports
-Generates automated monthly financial summaries and annual wealth performance reports, suitable for printing or exporting to PDF.
-
----
-
-### 22. Admin Settings & White-Label Customization
-Located under `WordPress Admin Panel -> WealthOS -> Settings`:
-* **Application Name**: Rebrand plugin title (e.g. `MyWealthOS`).
-* **Tagline**: Rebrand tagline.
-* **Currency Symbol**: Global currency symbol (`$`, `€`, `£`, `¥`).
-* **Primary & Accent Colors**: Custom HEX color pickers matching client site branding.
-* **Uninstall Clean-up**: Toggle to wipe database tables on plugin deletion.
+### 16. Admin White-Labeling & System Configuration
+Located under `WordPress Admin -> WealthOS -> Settings`:
+* **App Name, Tagline, Primary Color, Accent Color, Currency Symbol, and Uninstall Data Deletion Toggle**.
