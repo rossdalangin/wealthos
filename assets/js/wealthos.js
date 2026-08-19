@@ -103,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				case 'compounding':
 					this.loadCompoundingCalculator(contentDiv);
 					break;
+				case 'reports':
+					this.loadReports(contentDiv);
+					break;
 				default:
 					this.loadSummary();
 			}
@@ -1197,6 +1200,64 @@ document.addEventListener('DOMContentLoaded', function() {
 			document.getElementById('calc-contrib-out').innerText = symbol + Math.round(contrib).toLocaleString();
 			document.getElementById('calc-final-out').innerText = symbol + Math.round(future).toLocaleString();
 			document.getElementById('calc-results').style.display = 'block';
+		},
+
+		// --- REPORTS & EXPORTS MODULE ---
+		loadReports: function(container) {
+			const self = this;
+
+			this.apiFetch('reports/annual').then(data => {
+				const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
+
+				container.innerHTML = `
+					<div class="wealthos-card" style="max-width: 750px; margin: 0 auto;">
+						<h3>Reports & Financial Exports</h3>
+						<p style="color: var(--wealthos-text-muted);">
+							Generate print-ready statement reports or export structured financial summary data.
+						</p>
+
+						<div class="wealthos-grid-2" style="margin-top: 20px;">
+							<div class="wealthos-card" style="background:#f8fafc;">
+								<h4 style="margin: 0 0 8px 0;">Annual Wealth Statement</h4>
+								<p style="font-size: 13px; color: var(--wealthos-text-muted); margin-bottom: 16px;">
+									Print or save a complete PDF report of income, expenses, net worth, and risk status.
+								</p>
+								<button class="wealthos-btn" onclick="window.print()">Print / Save PDF</button>
+							</div>
+
+							<div class="wealthos-card" style="background:#f8fafc;">
+								<h4 style="margin: 0 0 8px 0;">Export Structured Data</h4>
+								<p style="font-size: 13px; color: var(--wealthos-text-muted); margin-bottom: 16px;">
+									Download a complete JSON record of your current financial system metrics.
+								</p>
+								<button class="wealthos-btn" style="background: var(--wealthos-primary);" onclick="WealthOSApp.exportJSONData()">Download JSON</button>
+							</div>
+						</div>
+
+						<div style="margin-top:24px; padding-top:16px; border-top:1px solid var(--wealthos-border);">
+							<h4>Annual Statement Summary Preview (${data.report_year})</h4>
+							<table class="wealthos-table">
+								<tr><td><strong>Annual Income</strong></td><td>${symbol}${parseFloat(data.annual_income).toLocaleString()}</td></tr>
+								<tr><td><strong>Annual Expenses</strong></td><td>${symbol}${parseFloat(data.annual_expenses).toLocaleString()}</td></tr>
+								<tr><td><strong>Annual Surplus</strong></td><td>${symbol}${parseFloat(data.annual_savings).toLocaleString()}</td></tr>
+								<tr><td><strong>Net Worth Valuation</strong></td><td>${symbol}${parseFloat(data.net_worth).toLocaleString()}</td></tr>
+							</table>
+						</div>
+					</div>
+				`;
+			});
+		},
+
+		exportJSONData: function() {
+			this.apiFetch('dashboard-summary').then(data => {
+				const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = 'wealthos-summary-export.json';
+				a.click();
+				URL.revokeObjectURL(url);
+			});
 		},
 
 		deleteItem: function(module, id) {
