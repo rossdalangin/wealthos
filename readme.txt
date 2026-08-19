@@ -18,22 +18,24 @@ Income → Cash Flow → Expense Control → Emergency Fund → Debt Reduction �
 
 **Educational Disclaimer**: WealthOS is an educational and financial-planning software tool, not a registered financial adviser or fiduciary. It does not promise guaranteed returns or financial success.
 
-== Features ==
-- Complete Income & Expense Tracking with Expense Leak Detection
-- Zero-Based, Percentage-Based, and Custom Budgeting
-- Emergency Fund Planner with multi-stage goals
-- Debt Reduction Strategies (Debt Avalanche vs Debt Snowball)
-- Investment Portfolio & Asset Building Tracker
-- Net Worth Engine with historical snapshots & visual charts
-- Transparent 0-100 Wealth Score & Financial Bottleneck Engine
-- "What Should I Do Next?" Action Center & Wealth Roadmap
-- Financial Independence (FI) Projections & Compound Interest Calculator
-- Entrepreneur & Freelancer Business Module with Revenue/Profit Trackers
-- Risk Management Checklist & Financial Risk Score
-- Scenario Planner & "What If?" Calculator
-- Financial Calendar & Custom Reminders
-- Monthly Financial Review & Printable/PDF Annual Wealth Report
-- Customizable Branding, Colors, and Terminology Settings
+== Features & Modules ==
+- **Income Module & Growth Planner**: Track primary, freelance, side-hustle, and investment income streams with frequency normalizers.
+- **Expense Control Engine**: Track essential vs discretionary spending and detect expense leaks non-judgmentally.
+- **Budgeting**: Zero-Based, Percentage-Based, and Custom Budgeting models with Budget vs Actual comparisons.
+- **Emergency Reserve Planner**: Multi-stage liquidity targets (Starter $1,000, 1 Month, 3 Months, 6 Months).
+- **Debt Reduction Strategies**: Simulate Debt Avalanche (highest interest rate) vs Debt Snowball (smallest balance).
+- **Savings Goals**: Milestone trackers with required monthly contribution calculations.
+- **Investment Portfolio & Allocation**: Portfolio value, asset class percentages, and concentration warnings.
+- **Productive Assets**: Track cash-flowing real estate, businesses, intellectual property, and equipment.
+- **Net Worth Engine**: Total Assets minus Total Liabilities, growth % trends, and historical snapshots.
+- **WealthScore (0–100)**: Transparent score across 5 core financial components.
+- **Financial Bottleneck Engine**: Automated identification of the #1 bottleneck holding back your net worth.
+- **Action Center ("What Should I Do Next?")**: Prioritized action cards based on bottleneck analysis.
+- **Visual Wealth Roadmap**: 7-stage milestone journey tracking.
+- **Entrepreneur & Freelancer Business Module**: Revenue, operating expenses, profit, and owner draw trackers.
+- **Financial Risk Checklist**: Risk management coverage across insurance, emergency cash, debt, and cybersecurity.
+- **Compounding Growth Calculator & FI Projections**: Interactive compounding calculator and Financial Independence (25x Rule) projections.
+- **White-Label & Custom Branding**: Rebrand plugin name, tagline, colors, and currency symbol from the WordPress admin panel.
 
 == Installation ==
 

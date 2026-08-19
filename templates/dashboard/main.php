@@ -14,6 +14,14 @@ $tagline  = WealthOS_Settings::get_setting( 'tagline', 'Your Personal Wealth Ope
 		</div>
 	</div>
 
+	<!-- Contextual Guidance Banner -->
+	<div class="wealthos-card" style="margin-bottom: 20px; background: #f0fdf4; border-left: 4px solid var(--wealthos-accent);">
+		<h4 style="margin: 0 0 4px 0; color: var(--wealthos-accent-hover);"><?php esc_html_e( 'System Philosophy & Instructions:', 'wealthos' ); ?></h4>
+		<p style="margin: 0; font-size: 13px; color: var(--wealthos-text);">
+			<?php esc_html_e( 'WealthOS turns financial information into a clear action plan. Work through each module sequentially: Log Income → Control Expenses & Cash Flow → Build Emergency Reserve → Eliminate Debt → Accumulate Productive Assets.', 'wealthos' ); ?>
+		</p>
+	</div>
+
 	<div class="wealthos-nav">
 		<button class="wealthos-nav-btn active" data-tab="overview"><?php esc_html_e( 'Overview', 'wealthos' ); ?></button>
 		<button class="wealthos-nav-btn" data-tab="income"><?php esc_html_e( 'Income', 'wealthos' ); ?></button>
@@ -35,7 +43,7 @@ $tagline  = WealthOS_Settings::get_setting( 'tagline', 'Your Personal Wealth Ope
 	</div>
 
 	<div class="wealthos-disclaimer">
-		<strong><?php esc_html_e( 'Educational & Planning Notice:', 'wealthos' ); ?></strong>
+		<strong><?php esc_html_e( 'Educational & Financial Planning Notice:', 'wealthos' ); ?></strong>
 		<?php echo esc_html( WealthOS_Settings::get_setting( 'disclaimer_text' ) ); ?>
 	</div>
 </div>
