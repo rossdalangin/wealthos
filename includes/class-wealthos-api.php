@@ -41,6 +41,17 @@ class WealthOS_API {
 			)
 		);
 
+		// Annual Report Endpoint
+		register_rest_route(
+			$this->namespace,
+			'/reports/annual',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_annual_report' ),
+				'permission_callback' => array( $this, 'check_auth' ),
+			)
+		);
+
 		// CRUD Endpoint dispatcher
 		register_rest_route(
 			$this->namespace,
@@ -162,6 +173,12 @@ class WealthOS_API {
 			'bottleneck'   => $bottleneck,
 			'actions'      => $actions,
 		) );
+	}
+
+	public function get_annual_report( $request ) {
+		$user_id = get_current_user_id();
+		$report  = WealthOS_Reports::generate_annual_report( $user_id );
+		return rest_ensure_response( $report );
 	}
 
 	public function handle_get( $request ) {
