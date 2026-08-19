@@ -18,6 +18,11 @@ Income → Cash Flow → Expense Control → Emergency Fund → Debt Reduction �
 
 **Educational Disclaimer**: WealthOS is an educational and financial-planning software tool, not a registered financial adviser or fiduciary. It does not promise guaranteed returns or financial success.
 
+== Resources & Documentation ==
+- **Developer & Feature Manual**: See `DOCUMENTATION.md` for full field guides, calculations, and formulas.
+- **Step-by-Step Masterclass Guides**: See `TUTORIALS.md` for 5 user walkthroughs (Beginner, Debt Freedom, Freelancers/Entrepreneurs, Families, and FI Scaling).
+- **Sales Copy & Marketing Collateral**: See `MARKETING.md` for landing page copy, email launch sequences, feature comparison matrices, and social media hooks.
+
 == Features & Modules ==
 - **Income Module & Growth Planner**: Track primary, freelance, side-hustle, and investment income streams with frequency normalizers.
 - **Expense Control Engine**: Track essential vs discretionary spending and detect expense leaks non-judgmentally.

@@ -3,6 +3,12 @@
 
 ---
 
+### Key Resources & Guides
+* **Step-by-Step User Masterclasses**: See [TUTORIALS.md](TUTORIALS.md) for 5 real-world walkthroughs (Beginner, Debt Freedom, Freelancer/Entrepreneur, Household, and Wealth Scaling).
+* **Sales Copy & Marketing Collateral**: See [MARKETING.md](MARKETING.md) for landing page copy, value propositions, email launch sequences, feature comparison tables, and social media hooks.
+
+---
+
 ### Table of Contents
 1. **Overview & Product Philosophy**
 2. **Onboarding Wizard**
