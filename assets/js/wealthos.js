@@ -70,9 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				case 'expenses':
 					this.loadExpenses(contentDiv);
 					break;
-				case 'budgets':
-					this.loadBudgets(contentDiv);
-					break;
 				case 'debts':
 					this.loadDebts(contentDiv);
 					break;
@@ -93,6 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
 					break;
 				case 'actions':
 					this.loadActions(contentDiv);
+					break;
+				case 'roadmap':
+					this.loadRoadmap(contentDiv);
+					break;
+				case 'fi':
+					this.loadFI(contentDiv);
+					break;
+				case 'scenario':
+					this.loadScenarioPlanner(contentDiv);
 					break;
 				case 'compounding':
 					this.loadCompoundingCalculator(contentDiv);
@@ -192,6 +198,56 @@ document.addEventListener('DOMContentLoaded', function() {
 		renderOverview: function(container, data) {
 			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
 
+			// Render Donut Chart SVG for Asset Allocation
+			const allocPct = data.investments.allocation_pct || {};
+			const allocKeys = Object.keys(allocPct);
+			let donutSvg = '';
+
+			if (allocKeys.length > 0) {
+				const colors = ['#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#ec4899'];
+				let startAngle = 0;
+				let slices = '';
+				let legend = '';
+
+				allocKeys.forEach((key, idx) => {
+					const pct = allocPct[key];
+					const angle = (pct / 100) * 360;
+					const color = colors[idx % colors.length];
+
+					const x1 = 50 + 40 * Math.cos(Math.PI * startAngle / 180);
+					const y1 = 50 + 40 * Math.sin(Math.PI * startAngle / 180);
+					const endAngle = startAngle + angle;
+					const x2 = 50 + 40 * Math.cos(Math.PI * endAngle / 180);
+					const y2 = 50 + 40 * Math.sin(Math.PI * endAngle / 180);
+					const largeArc = angle > 180 ? 1 : 0;
+
+					if (pct >= 99.9) {
+						slices += `<circle cx="50" cy="50" r="40" fill="${color}" />`;
+					} else {
+						slices += `<path d="M50,50 L${x1},${y1} A40,40 0 ${largeArc},1 ${x2},${y2} Z" fill="${color}" />`;
+					}
+
+					legend += `<div style="display:flex; align-items:center; gap:8px; font-size:12px; margin-top:4px;">
+						<span style="width:12px; height:12px; background:${color}; border-radius:2px; display:inline-block;"></span>
+						<span>${key}: ${pct}%</span>
+					</div>`;
+
+					startAngle = endAngle;
+				});
+
+				donutSvg = `
+					<div style="display:flex; align-items:center; gap:20px; margin-top:12px;">
+						<svg viewBox="0 0 100 100" style="width:100px; height:100px; border-radius:50%;">
+							${slices}
+							<circle cx="50" cy="50" r="22" fill="#ffffff" />
+						</svg>
+						<div>${legend}</div>
+					</div>
+				`;
+			} else {
+				donutSvg = '<p style="font-size:13px; color:var(--wealthos-text-muted);">No investment allocation logged yet.</p>';
+			}
+
 			let html = `
 				<div class="wealthos-grid-4">
 					<div class="wealthos-card">
@@ -228,6 +284,13 @@ document.addEventListener('DOMContentLoaded', function() {
 								<p style="margin: 4px 0 0 0; font-size: 13px; color: var(--wealthos-text-muted);">${data.wealth_score.disclaimer}</p>
 							</div>
 						</div>
+						<div style="margin-top: 16px; font-size: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+							<div>Cash Flow: ${data.wealth_score.cash_flow_score}/20</div>
+							<div>Emergency: ${data.wealth_score.emergency_score}/20</div>
+							<div>Debt Burden: ${data.wealth_score.debt_score}/20</div>
+							<div>Investing: ${data.wealth_score.investing_score}/20</div>
+							<div>Risk Protection: ${data.wealth_score.risk_protection_score}/20</div>
+						</div>
 					</div>
 
 					<div class="wealthos-card">
@@ -237,6 +300,23 @@ document.addEventListener('DOMContentLoaded', function() {
 						<ul style="margin: 0; padding-left: 20px; font-size: 13px;">
 							${data.bottleneck.recommendations.map(r => `<li>${r}</li>`).join('')}
 						</ul>
+					</div>
+				</div>
+
+				<div class="wealthos-grid-2">
+					<div class="wealthos-card">
+						<h3>Asset Allocation</h3>
+						${donutSvg}
+					</div>
+					<div class="wealthos-card">
+						<h3>Emergency Reserve Protection</h3>
+						<h4 style="margin: 0 0 8px 0;">${data.emergency.stage}</h4>
+						<div style="background:#e2e8f0; border-radius:10px; height:12px; width:100%; overflow:hidden;">
+							<div style="background:var(--wealthos-accent); height:100%; width:${data.emergency.percentage_completed}%;"></div>
+						</div>
+						<p style="margin:8px 0 0 0; font-size:13px; color:var(--wealthos-text-muted);">
+							Current: ${symbol}${data.emergency.current_amount.toLocaleString()} / Target: ${symbol}${data.emergency.target_amount.toLocaleString()} (${data.emergency.percentage_completed}%)
+						</p>
 					</div>
 				</div>
 			`;
@@ -859,6 +939,162 @@ document.addEventListener('DOMContentLoaded', function() {
 					</div>
 				`;
 			});
+		},
+
+		// --- WEALTH ROADMAP ---
+		loadRoadmap: function(container) {
+			const stages = [
+				{ step: 1, title: 'Know Your Numbers', desc: 'Log all income sources, expenses, and asset balances.' },
+				{ step: 2, title: 'Control Cash Flow', desc: 'Generate a positive monthly surplus (Income > Expenses).' },
+				{ step: 3, title: 'Starter Emergency Fund', desc: 'Accumulate a $1,000 liquid buffer.' },
+				{ step: 4, title: 'High-Interest Debt Elimination', desc: 'Pay off credit card balances using Avalanche or Snowball.' },
+				{ step: 5, title: 'Full Emergency Protection', desc: 'Build 3–6 months essential expense reserve.' },
+				{ step: 6, title: 'Consistent Saving & Long-Term Investing', desc: 'Automate 15%+ savings into index funds/ETFs.' },
+				{ step: 7, title: 'Productive Asset Building & FI', desc: 'Scale cash-flowing assets toward Financial Independence.' }
+			];
+
+			let items = stages.map(st => `
+				<div style="display:flex; align-items:flex-start; gap:16px; margin-bottom:16px;">
+					<div style="background:var(--wealthos-primary); color:#fff; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">${st.step}</div>
+					<div>
+						<h4 style="margin:0 0 4px 0;">${st.title}</h4>
+						<p style="margin:0; font-size:13px; color:var(--wealthos-text-muted);">${st.desc}</p>
+					</div>
+				</div>
+			`).join('');
+
+			container.innerHTML = `
+				<div class="wealthos-card" style="max-width:700px; margin:0 auto;">
+					<h3>Wealth Creation Roadmap</h3>
+					<p style="margin-bottom:20px;">Follow the 7 sequential milestones to systematic financial freedom:</p>
+					${items}
+				</div>
+			`;
+		},
+
+		// --- FINANCIAL INDEPENDENCE (FI) PROJECTIONS ---
+		loadFI: function(container) {
+			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
+
+			container.innerHTML = `
+				<div class="wealthos-card" style="max-width: 650px; margin: 0 auto;">
+					<h3>Financial Independence (FI) Target Projections</h3>
+					<p style="font-size:13px; color:var(--wealthos-text-muted);">
+						The standard Financial Independence target uses the 25x Rule (Annual Expenses &times; 25).
+					</p>
+
+					<div class="wealthos-form-group">
+						<label>Expected Annual Expenses (${symbol})</label>
+						<input type="number" id="fi-expenses" value="48000">
+					</div>
+					<div class="wealthos-form-group">
+						<label>Current Investments (${symbol})</label>
+						<input type="number" id="fi-current" value="25000">
+					</div>
+					<div class="wealthos-form-group">
+						<label>Monthly Contribution (${symbol})</label>
+						<input type="number" id="fi-monthly" value="1000">
+					</div>
+					<div class="wealthos-form-group">
+						<label>Assumed Real Annual Return (%)</label>
+						<input type="number" id="fi-return" value="7.0" step="0.1">
+					</div>
+					<button class="wealthos-btn" onclick="WealthOSApp.runFICalc()">Calculate FI Projections</button>
+
+					<div id="fi-results" style="margin-top: 20px; display: none;">
+						<hr style="border: 0; border-top: 1px solid var(--wealthos-border); margin-bottom: 16px;">
+						<div class="wealthos-grid-2">
+							<div>
+								<div class="wealthos-stat-sub">25x FI Target Number</div>
+								<div class="wealthos-stat-value" id="fi-target-out" style="font-size: 22px;"></div>
+							</div>
+							<div>
+								<div class="wealthos-stat-sub">Projected Portfolio (15 Yrs)</div>
+								<div class="wealthos-stat-value" id="fi-projected-out" style="font-size: 22px; color: var(--wealthos-accent);"></div>
+							</div>
+						</div>
+						<p class="wealthos-stat-sub" style="margin-top:12px; font-style:italic;">
+							Illustration only. Actual investment returns, inflation, taxes, fees, and future expenses may differ substantially.
+						</p>
+					</div>
+				</div>
+			`;
+		},
+
+		runFICalc: function() {
+			const exp = parseFloat(document.getElementById('fi-expenses').value) || 0;
+			const cur = parseFloat(document.getElementById('fi-current').value) || 0;
+			const m = parseFloat(document.getElementById('fi-monthly').value) || 0;
+			const rate = parseFloat(document.getElementById('fi-return').value) || 0;
+			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
+
+			const target = exp * 25;
+			const years = 15;
+			const mRate = (rate / 100) / 12;
+			const months = years * 12;
+
+			let projected = cur * Math.pow(1 + mRate, months);
+			if (mRate > 0) {
+				projected += m * ((Math.pow(1 + mRate, months) - 1) / mRate);
+			} else {
+				projected += m * months;
+			}
+
+			document.getElementById('fi-target-out').innerText = symbol + Math.round(target).toLocaleString();
+			document.getElementById('fi-projected-out').innerText = symbol + Math.round(projected).toLocaleString();
+			document.getElementById('fi-results').style.display = 'block';
+		},
+
+		// --- SCENARIO PLANNER ("WHAT IF?") ---
+		loadScenarioPlanner: function(container) {
+			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
+
+			container.innerHTML = `
+				<div class="wealthos-card" style="max-width: 650px; margin: 0 auto;">
+					<h3>"What-If?" Wealth Scenario Simulator</h3>
+					<p style="font-size:13px; color:var(--wealthos-text-muted);">
+						Model how small monthly habits compound into significant long-term net worth gains over 5 years.
+					</p>
+
+					<div class="wealthos-form-group">
+						<label>Add Extra Savings / Investments (${symbol}/month)</label>
+						<input type="number" id="sc-extra" value="300">
+					</div>
+					<div class="wealthos-form-group">
+						<label>Increase Monthly Income (${symbol}/month)</label>
+						<input type="number" id="sc-income" value="500">
+					</div>
+					<button class="wealthos-btn" onclick="WealthOSApp.runScenarioSim()">Run 5-Year Simulation</button>
+
+					<div id="sc-results" style="margin-top: 20px; display: none;">
+						<hr style="border: 0; border-top: 1px solid var(--wealthos-border); margin-bottom: 16px;">
+						<div>
+							<div class="wealthos-stat-sub">Estimated Additional 5-Year Wealth Created</div>
+							<div class="wealthos-stat-value" id="sc-out" style="font-size: 26px; color: var(--wealthos-accent);"></div>
+						</div>
+					</div>
+				</div>
+			`;
+		},
+
+		runScenarioSim: function() {
+			const extra = parseFloat(document.getElementById('sc-extra').value) || 0;
+			const inc = parseFloat(document.getElementById('sc-income').value) || 0;
+			const symbol = window.wealthosSettings ? window.wealthosSettings.currencySymbol : '$';
+
+			const totalExtraM = extra + inc;
+			const months = 60; // 5 years
+			const mRate = 0.06 / 12; // 6% assumed annual return
+
+			let additionalWealth = 0;
+			if (mRate > 0) {
+				additionalWealth = totalExtraM * ((Math.pow(1 + mRate, months) - 1) / mRate);
+			} else {
+				additionalWealth = totalExtraM * months;
+			}
+
+			document.getElementById('sc-out').innerText = symbol + Math.round(additionalWealth).toLocaleString();
+			document.getElementById('sc-results').style.display = 'block';
 		},
 
 		// --- COMPOUNDING CALCULATOR ---

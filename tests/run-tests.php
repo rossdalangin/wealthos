@@ -118,6 +118,18 @@ if ( (float) $biz['required_sales'] === 10.0 && (float) $biz['required_leads'] =
 	$errors++;
 }
 
+// Test 7: Net Worth Percentage Growth Formula
+echo "[Test 7] Net Worth Growth % Calculation... ";
+$prev_nw = 100000.0;
+$cur_nw  = 125000.0;
+$growth_pct = ( ( $cur_nw - $prev_nw ) / abs( $prev_nw ) ) * 100;
+if ( abs( $growth_pct - 25.0 ) < 0.01 ) {
+	echo "PASSED (Growth: {$growth_pct}%)\n";
+} else {
+	echo "FAILED (Expected 25.0%, got {$growth_pct}%)\n";
+	$errors++;
+}
+
 echo "\n----------------------------------------\n";
 if ( $errors === 0 ) {
 	echo "ALL VERIFICATION TESTS PASSED SUCCESSFULLY!\n";

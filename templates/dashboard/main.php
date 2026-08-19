@@ -33,6 +33,9 @@ $tagline  = WealthOS_Settings::get_setting( 'tagline', 'Your Personal Wealth Ope
 		<button class="wealthos-nav-btn" data-tab="business"><?php esc_html_e( 'Business', 'wealthos' ); ?></button>
 		<button class="wealthos-nav-btn" data-tab="risk"><?php esc_html_e( 'Risk Checklist', 'wealthos' ); ?></button>
 		<button class="wealthos-nav-btn" data-tab="actions"><?php esc_html_e( 'Action Center', 'wealthos' ); ?></button>
+		<button class="wealthos-nav-btn" data-tab="roadmap"><?php esc_html_e( 'Wealth Roadmap', 'wealthos' ); ?></button>
+		<button class="wealthos-nav-btn" data-tab="fi"><?php esc_html_e( 'FI Projections', 'wealthos' ); ?></button>
+		<button class="wealthos-nav-btn" data-tab="scenario"><?php esc_html_e( 'Scenario Planner', 'wealthos' ); ?></button>
 		<button class="wealthos-nav-btn" data-tab="compounding"><?php esc_html_e( 'Compounding Calc', 'wealthos' ); ?></button>
 	</div>
 
