@@ -1,4 +1,4 @@
-# WealthOS — Step-by-Step Tutorials & Wealth Masterclass Guides
+# WealthOS — Step-by-Step Masterclasses, Video Scripts & Printable Worksheets
 
 ---
 
@@ -8,6 +8,8 @@
 3. **Tutorial 3: Entrepreneur & Freelancer Guide — Managing Irregular Income & Business Cash Flow**
 4. **Tutorial 4: Family Household Wealth System — Managing Shared Expenses & Goals**
 5. **Tutorial 5: Wealth Accelerator — Scaling Productive Assets & Reaching Financial Independence (FI)**
+6. **Video Script Outlines (5-Minute Masterclass Series)**
+7. **Printable / Copyable Financial Worksheets (ASCII Templates)**
 
 ---
 
@@ -151,3 +153,50 @@ Transition from saving to accumulating cash-flowing productive assets and calcul
    - Return Rate: `7.0%`
    - Horizon: `20 Years`
    - **Estimated Final Portfolio**: `~$885,000+`
+
+---
+
+### 6. Video Script Outlines (5-Minute Masterclass Series)
+
+#### Masterclass Video 1: "The 11-Stage Wealth Creation Engine"
+* **0:00 - 1:00**: Why expense tracking alone fails to build wealth.
+* **1:00 - 2:30**: Introducing the 11-stage sequential process in WealthOS.
+* **2:30 - 4:00**: Live demo logging income, expenses, and cash flow surplus.
+* **4:00 - 5:00**: How the Bottleneck Engine diagnoses your #1 priority action.
+
+#### Masterclass Video 2: "Crushing Credit Card Debt with Debt Avalanche"
+* **0:00 - 1:00**: The hidden cost of high-interest credit card debt.
+* **1:00 - 3:00**: Entering balances into the WealthOS Debt Module.
+* **3:00 - 4:30**: Comparing Debt Avalanche vs Debt Snowball timelines.
+* **4:30 - 5:00**: Setting up your surplus acceleration plan.
+
+---
+
+### 7. Printable / Copyable Financial Worksheets (ASCII Templates)
+
+#### Worksheet A: Monthly Financial Surplus Audit
+```
++-----------------------------------------------------------------------+
+|                 WEALTHOS MONTHLY SURPLUS WORKSHEET                   |
++-----------------------------------------------------------------------+
+| GROSS MONTHLY INCOME                                                  |
+|   Primary Job Salary:               $ __________________             |
+|   Freelance / Side Income:          $ __________________             |
+|   TOTAL MONTHLY INCOME (A):         $ __________________             |
+|                                                                       |
+| MONTHLY ESSENTIAL EXPENSES (NEEDS)                                    |
+|   Housing / Rent / Mortgage:        $ __________________             |
+|   Groceries & Utilities:            $ __________________             |
+|   Essential Transportation:         $ __________________             |
+|   TOTAL ESSENTIAL EXPENSES (B):     $ __________________             |
+|                                                                       |
+| MONTHLY DISCRETIONARY EXPENSES (WANTS)                                |
+|   Dining Out / Entertainment:       $ __________________             |
+|   Recurring Subscriptions:          $ __________________             |
+|   TOTAL DISCRETIONARY EXPENSES (C): $ __________________             |
+|                                                                       |
+| CASH FLOW SURPLUS                                                     |
+|   Surplus = A - (B + C):            $ __________________ / month     |
+|   Savings Rate = (Surplus / A) * 100: ________________ %              |
++-----------------------------------------------------------------------+
+```

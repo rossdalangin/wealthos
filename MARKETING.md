@@ -9,6 +9,10 @@
 4. **Email Launch & Nurture Sequence (4-Part Series)**
 5. **Social Media & Content Marketing Assets**
 6. **Objection Handling & Frequently Asked Questions (FAQ)**
+7. **Full Video Sales Letter (VSL) Script (10-Minute High-Converting Copy)**
+8. **Facebook & Google PPC Ad Creative Angles**
+9. **High-Converting Webinar Funnel Outline**
+10. **Affiliate Promotion Swipe Files**
 
 ---
 
@@ -132,3 +136,49 @@ Unlike proprietary financial SaaS platforms that charge monthly subscriptions an
 
 **Q: Can I customize the plugin name and branding?**
 *A: Yes! WealthOS includes full white-labeling settings under `WordPress Admin -> WealthOS -> Settings`. You can customize the app name, tagline, logo, primary color, accent color, and currency symbol.*
+
+---
+
+### 7. Full Video Sales Letter (VSL) Script (10-Minute Copy)
+
+#### [0:00 - 1:30] Hook & Problem Statement
+*(Visual: Presenter at desk with WordPress dashboard open)*
+"If you've ever spent hours categorizing receipts in a budgeting app, only to realize at the end of the year that your net worth hasn't grown an inch... you're not alone.
+
+The problem isn't that you aren't trying. The problem is that traditional budgeting apps are built like rear-view mirrors. They tell you where your money *went*, but they don't give you an operating system to build wealth moving forward."
+
+#### [1:30 - 4:00] Introducing WealthOS
+"Imagine if your financial data operated like a live financial model. When your income rises, or when you eliminate a credit card balance, your software immediately calculates the ripple effect on your savings rate, emergency reserve, and 20-year Financial Independence timeline.
+
+That is **WealthOS** — the complete Personal Wealth Operating System built for WordPress."
+
+---
+
+### 8. Facebook & Google PPC Ad Creative Angles
+
+#### Ad Angle 1: "The SaaS Subscription Trap" (Facebook / Instagram)
+* **Headline**: Stop Paying Monthly Fees to View Your Own Net Worth.
+* **Primary Text**: "Tired of financial apps charging $12/month while selling your transaction history to data brokers? Own your financial operating system 100% on your self-hosted WordPress site. Try WealthOS today."
+
+#### Ad Angle 2: "Debt Avalanche vs Snowball" (Google Search PPC)
+* **Search Intent**: `debt payoff calculator wordpress`
+* **Ad Copy**: "Eliminate High-Interest Debt Faster | WealthOS WordPress Plugin. Simulate Debt Avalanche & Snowball strategies directly on your site. Free demo available."
+
+---
+
+### 9. Affiliate Promotion Swipe Files
+
+#### Subject: [Swipe] The WordPress plugin that replaces 4 financial apps
+**Body Copy**:
+> "Hey [Name],
+>
+> Quick question: How long would it take you right now to figure out your exact net worth, your emergency reserve coverage, and your #1 financial bottleneck?
+>
+> If you're like most people, you'd have to log into 3 different apps and open a spreadsheet.
+>
+> Our friends at WealthOS just launched a complete Personal Wealth Operating System plugin for WordPress.
+>
+> Check out the live demo here: [Affiliate Link]
+>
+> Best,
+> [Your Name]"

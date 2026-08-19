@@ -1,5 +1,5 @@
 # WealthOS — Personal Wealth Operating System
-## Complete Business Process Manual, Module Guides & Form Instructions
+## Complete Business Process Manual, Developer API Reference & Database Architecture
 
 ---
 
@@ -34,6 +34,9 @@ Every form, input field, and calculation in WealthOS feeds directly into this se
 16. **Projections & Calculators: Compounding Calculator & FI Projections**
 17. **Projections & Calculators: Scenario Planner ("What If?")**
 18. **Admin White-Labeling & System Configuration**
+19. **Developer Reference: Database Schema ERD & Table Specifications**
+20. **Developer Reference: REST API Endpoints & Request/Response Schemas**
+21. **Developer Reference: WordPress Hooks, Actions & Extensibility Filters**
 
 ---
 
@@ -271,3 +274,79 @@ $$\text{FI Target} = \text{Annual Expenses} \times 25$$
 ### 16. Admin White-Labeling & System Configuration
 Located under `WordPress Admin -> WealthOS -> Settings`:
 * **App Name, Tagline, Primary Color, Accent Color, Currency Symbol, and Uninstall Data Deletion Toggle**.
+
+---
+
+### 17. Developer Reference: Database Schema ERD & Table Specifications
+
+```
++---------------------------------+        +---------------------------------+
+|      wp_wealthos_user_profile   |        |       wp_wealthos_income        |
++---------------------------------+        +---------------------------------+
+| id (PK)                         |        | id (PK)                         |
+| user_id (FK -> wp_users.ID)     |        | user_id (FK -> wp_users.ID)     |
+| age_range                       |        | name                            |
+| currency                        |        | category                        |
+| employment_type                 |        | amount                          |
+| risk_tolerance                  |        | frequency                       |
+| financial_goal                  |        | is_recurring                    |
++---------------------------------+        +---------------------------------+
+                 |                                          |
+                 +-------------------+----------------------+
+                                     |
++-----------------------------------+---------------------------------+
+|       wp_wealthos_expenses        |       wp_wealthos_debts         |
++-----------------------------------+---------------------------------+
+| id (PK)                           | id (PK)                         |
+| user_id                           | user_id                         |
+| name                              | name                            |
+| category                          | balance                         |
+| amount                            | interest_rate                   |
+| is_essential                      | minimum_payment                 |
++-----------------------------------+---------------------------------+
+```
+
+---
+
+### 18. Developer Reference: REST API Endpoints
+
+#### Namespace: `/wp-json/wealthos/v1/`
+
+| Endpoint | Method | Permission | Description |
+| :--- | :---: | :---: | :--- |
+| `/profile` | GET / POST | Logged-in | Fetch or update user onboarding profile |
+| `/dashboard-summary` | GET | Logged-in | Returns consolidated metrics across all 11 stages |
+| `/income` | GET / POST | Logged-in | Fetch or create income streams |
+| `/income/:id` | DELETE | Logged-in | Delete income entry |
+| `/expenses` | GET / POST | Logged-in | Fetch or create expense entries |
+| `/expenses/:id` | DELETE | Logged-in | Delete expense entry |
+| `/debts` | GET / POST | Logged-in | Fetch or create debt balances |
+| `/savings` | GET / POST | Logged-in | Fetch or create savings goals |
+| `/investments` | GET / POST | Logged-in | Fetch or create investment holdings |
+| `/assets` | GET / POST | Logged-in | Fetch or create productive cash-flowing assets |
+| `/business` | GET / POST | Logged-in | Fetch or update business performance metrics |
+| `/risk` | GET / POST | Logged-in | Fetch or update risk checklist items |
+| `/reports/annual` | GET | Logged-in | Generates full annual wealth statement object |
+
+---
+
+### 19. Developer Reference: WordPress Hooks & Extensibility Filters
+
+Developers can customize WealthOS calculations, REST routes, or dashboard styling via standard WordPress hooks:
+
+#### Filter: `wealthos_dashboard_summary_data`
+Allows third-party plugins to filter the consolidated dashboard metrics array.
+```php
+add_filter( 'wealthos_dashboard_summary_data', function( $summary, $user_id ) {
+    // Custom calculation adjustment
+    return $summary;
+}, 10, 2 );
+```
+
+#### Action: `wealthos_onboarding_completed`
+Fires when a user completes the setup wizard.
+```php
+add_action( 'wealthos_onboarding_completed', function( $user_id, $profile_data ) {
+    // Send welcome email or trigger CRM event
+}, 10, 2 );
+```
