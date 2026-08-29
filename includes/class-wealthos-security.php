@@ -94,6 +94,8 @@ class WealthOS_Security {
 	}
 }
 
-function current_user_id_can_manage() {
-	return current_user_can( 'manage_options' );
+if ( ! function_exists( 'current_user_id_can_manage' ) ) {
+	function current_user_id_can_manage() {
+		return current_user_can( 'manage_options' );
+	}
 }

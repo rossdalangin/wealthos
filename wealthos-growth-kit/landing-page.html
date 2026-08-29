@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WealthOS — Your Personal Wealth Operating System for WordPress</title>
+	<style>
+		:root {
+			--primary: #0f172a;
+			--accent: #10b981;
+			--accent-hover: #059669;
+			--bg: #f8fafc;
+			--text: #1e293b;
+			--muted: #64748b;
+			--card: #ffffff;
+			--border: #e2e8f0;
+		}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			color: var(--text);
+			background-color: var(--bg);
+			margin: 0;
+			padding: 0;
+			line-height: 1.6;
+		}
+		header {
+			background: var(--primary);
+			color: #ffffff;
+			padding: 80px 20px;
+			text-align: center;
+		}
+		header h1 {
+			font-size: 42px;
+			margin: 0 0 16px 0;
+			font-weight: 800;
+		}
+		header p {
+			font-size: 20px;
+			color: #94a3b8;
+			max-width: 700px;
+			margin: 0 auto 30px auto;
+		}
+		.cta-btn {
+			background: var(--accent);
+			color: #ffffff;
+			padding: 16px 36px;
+			font-size: 18px;
+			font-weight: 700;
+			text-decoration: none;
+			border-radius: 8px;
+			display: inline-block;
+			transition: background 0.2s ease;
+		}
+		.cta-btn:hover {
+			background: var(--accent-hover);
+		}
+		.container {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 60px 20px;
+		}
+		.grid-3 {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 24px;
+			margin-top: 40px;
+		}
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			padding: 28px;
+			border-radius: 12px;
+			box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+		}
+		.card h3 {
+			font-size: 20px;
+			margin-top: 0;
+			color: var(--primary);
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 24px;
+			background: #fff;
+		}
+		th, td {
+			padding: 16px;
+			border-bottom: 1px solid var(--border);
+			text-align: left;
+		}
+		th {
+			background: #f1f5f9;
+			color: var(--muted);
+		}
+		footer {
+			background: var(--primary);
+			color: #94a3b8;
+			text-align: center;
+			padding: 40px 20px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<h1>Your Personal Wealth Operating System</h1>
+		<p>Turn raw financial data into a live, interconnected wealth-building engine directly on your WordPress site.</p>
+		<a href="#pricing" class="cta-btn">Get WealthOS Today</a>
+	</header>
+
+	<div class="container">
+		<h2 style="text-align: center; font-size: 32px; margin-bottom: 10px;">Why WealthOS Changes Everything</h2>
+		<p style="text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 40px auto;">
+			Stop looking in the rear-view mirror with simple expense categorizers. Experience an interconnected financial model.
+		</p>
+
+		<div class="grid-3">
+			<div class="card">
+				<h3>#1 Bottleneck Engine</h3>
+				<p>Automatically diagnoses your single biggest financial priority — whether it's low income, high-interest debt, or missing compounding.</p>
+			</div>
+			<div class="card">
+				<h3>Debt Avalanche & Snowball</h3>
+				<p>Simulate mathematical and behavioral debt payoff schedules side-by-side to eliminate credit cards 3x faster.</p>
+			</div>
+			<div class="card">
+				<h3>100% Self-Hosted Privacy</h3>
+				<p>Your net worth stays 100% private on your own WordPress site. Zero monthly SaaS fees, zero external server tracking.</p>
+			</div>
+		</div>
+
+		<h2 id="pricing" style="text-align: center; font-size: 32px; margin-top: 80px; margin-bottom: 10px;">Simple, Transparent Pricing</h2>
+		<p style="text-align: center; color: var(--muted); margin-bottom: 40px;">No recurring SaaS subscriptions. Complete lifetime ownership.</p>
+
+		<div class="grid-3">
+			<div class="card" style="text-align: center;">
+				<h3>Personal License</h3>
+				<div style="font-size: 36px; font-weight: 800; margin: 16px 0;">$79 <span style="font-size: 16px; font-weight: 400; color: var(--muted);">/ year</span></div>
+				<p>1 Site License with full access to all 11 wealth lifecycle engines.</p>
+				<a href="#" class="cta-btn" style="width: 80%;">Buy Personal</a>
+			</div>
+			<div class="card" style="text-align: center; border: 2px solid var(--accent);">
+				<span style="background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 12px; text-transform: uppercase; font-weight: 700;">Best Value</span>
+				<h3 style="margin-top: 10px;">Lifetime Founder Deal</h3>
+				<div style="font-size: 36px; font-weight: 800; margin: 16px 0;">$299 <span style="font-size: 16px; font-weight: 400; color: var(--muted);">one-time</span></div>
+				<p>5 Site Licenses with lifetime updates and zero annual fees. Limited to first 500 founders.</p>
+				<a href="#" class="cta-btn" style="width: 80%;">Claim Founder Deal</a>
+			</div>
+			<div class="card" style="text-align: center;">
+				<h3>Agency License</h3>
+				<div style="font-size: 36px; font-weight: 800; margin: 16px 0;">$199 <span style="font-size: 16px; font-weight: 400; color: var(--muted);">/ year</span></div>
+				<p>10 Site Licenses with full white-label rebranding controls for coaching clients.</p>
+				<a href="#" class="cta-btn" style="width: 80%;">Buy Agency</a>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		&copy; WealthOS. Educational and financial planning software. Not a registered financial adviser or fiduciary.
+	</footer>
+
+</body>
+</html>
